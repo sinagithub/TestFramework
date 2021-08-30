@@ -11,7 +11,7 @@ import testautomation.utils.WebDriverUtils;
         features = {"src/test/resources/features"},
         glue = {"testautomation.stepdefinitions", "testautomation.utils"},
         plugin = {"json:target/cucumber-reports/cucumber.json"},
-        tags = "@wip")
+        tags = "@ui")
 
 
 public class Runner {

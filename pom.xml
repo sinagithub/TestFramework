@@ -39,7 +39,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>Yemeksepeti Report</projectName>
+                            <projectName>Report</projectName>
                             <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
                             <checkBuildResult>false</checkBuildResult>
                             <cucumberOutput>${project.build.directory}/cucumber-reports</cucumberOutput>
