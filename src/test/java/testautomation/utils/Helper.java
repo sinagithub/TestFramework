@@ -5,14 +5,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.xml.sax.Locator;
 
-import java.sql.DriverManager;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Set;
 
 public class Helper {
     protected WebDriver driver;
@@ -53,6 +47,14 @@ public class Helper {
         JavascriptExecutor js = ((JavascriptExecutor) driver);
         js.executeScript("arguments[0].scrollIntoView();", find(locator));
 
+    }
+
+    public void navigateForward() {
+        driver.navigate().forward();
+    }
+
+    public void navigateBack() {
+        driver.navigate().back();
     }
 
 

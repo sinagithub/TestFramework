@@ -31,7 +31,7 @@ public class LoginStepDefs {
 
     }
 
-    @When("Enter valid UserId and Password")
+    @When("Enter valid UserId and Password and click Login")
     public void enterCorrectUserIdAndPassword() throws Throwable {
         loginPage.inputTextToUserTextBox(validUser, true);
         loginPage.inputTextToPasswordTextBox(validPassword,true);
@@ -45,14 +45,24 @@ public class LoginStepDefs {
 
     }
 
-    @When("Enter invalid User and valid Password")
+    @When("Enter invalid User and valid Password and click Login")
     public void enterInvalidUserAndValidPassword() throws InterruptedException {
         loginPage.inputTextToUserTextBox(invalidUser, true);
         loginPage.inputTextToPasswordTextBox(validPassword,true);
         loginPage.clickLoginButton();
     }
 
-    @When("Enter valid User and invalid Password")
+    @When("Logged in Successfully")
+    public void loggedInSuccessfully() throws Throwable {
+        loginPage.navigateToLoginPage();
+        loginPage.inputTextToUserTextBox(validUser, true);
+        loginPage.inputTextToPasswordTextBox(validPassword,true);
+        loginPage.clickLoginButton();
+        loginPage.clickYemekSipraisiOnModal();
+        loginPage.assertLoginIsSuccess();
+    }
+
+    @When("Enter valid User and invalid Password and click Login")
     public void enterValidUserAndInvalidPassword() throws InterruptedException {
         loginPage.inputTextToUserTextBox(validUser, true);
         loginPage.inputTextToPasswordTextBox(invalidPassword,true);
@@ -63,6 +73,21 @@ public class LoginStepDefs {
     public void shouldSeeLoginFailed() throws Throwable {
         loginPage.assertLoginFailed();
     }
+
+    @When("Click Log out button")
+    public void clickLogOutButton() throws Throwable {
+        loginPage.dropUserInfoList();
+        loginPage.clickLogOutButton();
+
+    }
+    @Then("Should see browser not allowed to forward and session closed")
+    public void shouldSeeBrowserNotAllowedToForwardAndSessionClosed() throws Throwable {
+        loginPage.assertUserLoggedOut();
+        loginPage.navigateForward();
+        loginPage.assertUserLoggedOut();
+    }
+
+
 }
 
 

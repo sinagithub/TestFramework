@@ -20,6 +20,8 @@ public class LoginPage extends Helper {
     String userNameMainPageId = "ysUserName"; //Login sonrası kullanıcı adı üzerinden assertion
     String modalYemekSiparisiXpath = "/html/body/div[13]/div/div/div/div[2]/div/a[2]/div[1]/div";
     String invalidLoginMessageXpath = "/html/body/div[9]/div[2]/div[1]/span/strong";
+    String logoutButtonClass  = "btnUserLogout";
+
 
     String invalidLoginFailedPopupButtonXpath = "/html/body/div[9]/div[2]/div[2]/button";
     String failedLoginPopupMessage = "Hatalı giriş. Lütfen kullanıcı adı ve şifrenizi kontrol edip tekrar deneyiniz.";
@@ -61,7 +63,23 @@ public class LoginPage extends Helper {
         waitForElementExists(By.xpath(invalidLoginFailedPopupButtonXpath));
         click(By.xpath(invalidLoginFailedPopupButtonXpath));
         Assert.assertEquals(loginBoxTitle,getText(By.className(loginBoxTitleClass)));
+
     }
+
+    public void clickLogOutButton()throws Throwable{
+        waitForElementExists(By.className(logoutButtonClass));
+        click(By.className(logoutButtonClass));
+    }
+
+    public void dropUserInfoList()throws Throwable{
+        click(By.id(userNameMainPageId));
+    }
+
+    public void assertUserLoggedOut()throws Throwable{
+        waitForElementExists(By.className(loginBoxTitleClass));
+        Assert.assertEquals(loginBoxTitle,getText(By.className(loginBoxTitleClass)));
+    }
+
 
 
 
