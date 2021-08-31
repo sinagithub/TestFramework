@@ -1,3 +1,6 @@
+chrome : ver.92
+firefox :  ver.91
+
 
 -Login ve Favori restoran fonksiyonları test edildi.
 -Parallel ve crossbrowser koşması için browser tagları kullanıldı (@chrome , @firefox).
