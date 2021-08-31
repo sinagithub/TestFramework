@@ -1,21 +1,16 @@
 package testautomation.stepdefinitions;
 
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import testautomation.pages.LoginPage;
 import testautomation.utils.WebDriverUtils;
-import io.cucumber.java.en.Given;
-
-import java.util.Set;
 
 public class LoginStepDefs {
     LoginPage loginPage;
 
-    String validUser = "sinacan93@gmail.com";
-    String validPassword = "Asdam1123..";
+    String validUser = "sina.test.yemeksepeti@gmail.com";
+    String validPassword = "Test1123..";
     String invalidUser = "invalid@invalid.com";
     String invalidPassword = "invalid123";
 
@@ -54,6 +49,7 @@ public class LoginStepDefs {
 
     @When("Logged in Successfully")
     public void loggedInSuccessfully() throws Throwable {
+        loginPage.navigateToLoginPage();
         loginPage.navigateToLoginPage();
         loginPage.inputTextToUserTextBox(validUser, true);
         loginPage.inputTextToPasswordTextBox(validPassword,true);

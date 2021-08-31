@@ -1,7 +1,5 @@
 package testautomation.pages;
 
-
-
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,10 +26,7 @@ public class LoginPage extends Helper {
     String loginBoxTitle = "Kullanıcı Adı / E-Posta";
     String loginBoxTitleClass = "control-label";
     //TestData
-    String expectedUserNameAfterLogin = "sina can sürücü";
-
-
-
+    String expectedUserNameAfterLogin = "Yemek Can Sepeti";
 
     public void navigateToLoginPage(){
         driver.get("https://www.yemeksepeti.com/istanbul");
@@ -49,12 +44,15 @@ public class LoginPage extends Helper {
         click(By.id(loginButtonId));
     }
     public void assertLoginIsSuccess()throws Throwable{
+        waitForElementExists(By.id(userNameMainPageId));
         Assert.assertEquals(expectedUserNameAfterLogin,getText(By.id(userNameMainPageId)));
     }
 
-    public void clickYemekSipraisiOnModal()throws Throwable{
+    public void clickYemekSipraisiOnModal()throws Throwable //Login sonrası açılan modal seçimi
+    {
         waitForElementExists(By.xpath(modalYemekSiparisiXpath));
         click(By.xpath(modalYemekSiparisiXpath));
+
     }
 
     public void assertLoginFailed() throws Throwable{
@@ -72,6 +70,7 @@ public class LoginPage extends Helper {
     }
 
     public void dropUserInfoList()throws Throwable{
+        waitForElementExists(By.className(userNameMainPageId));
         click(By.id(userNameMainPageId));
     }
 
@@ -79,8 +78,5 @@ public class LoginPage extends Helper {
         waitForElementExists(By.className(loginBoxTitleClass));
         Assert.assertEquals(loginBoxTitle,getText(By.className(loginBoxTitleClass)));
     }
-
-
-
 
 }

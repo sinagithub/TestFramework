@@ -1,11 +1,11 @@
 package testautomation.utils;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 
 public class Helper {
@@ -24,7 +24,12 @@ public class Helper {
     }
 
     public void click(By locator) {
+        waitForElementExists(locator);
         find(locator).click();
+    }
+
+    public void clickAction(By locator) {
+        new Actions(driver).moveToElement(find(locator)).click().perform();
     }
 
     public void waitForElementExists(By locator){
@@ -32,11 +37,21 @@ public class Helper {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
+    public void sendEscape(){
+        new Actions(driver).moveToElement(find(By.cssSelector("body"))).sendKeys(Keys.ESCAPE).perform();
+    }
+
+
     public void inputText(By locator, boolean clearText, String inputText) {
         if (clearText) {
             find(locator).clear();
         }
         find(locator).sendKeys(inputText);
+    }
+
+    public void inputTextAction(By locator, String inputText) throws InterruptedException {
+        //Thread.sleep(1000);
+        new Actions(driver).moveToElement(find(locator)).sendKeys(inputText).perform();
     }
 
     public String getText(By locator) {
@@ -57,7 +72,19 @@ public class Helper {
         driver.navigate().back();
     }
 
+    public boolean isDisplayed(By locator){
+        try {
+            WebElement element = find(locator);
+            return element.isDisplayed()  || element.isEnabled();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    }
 
-}
+
+
+
+
 
 
