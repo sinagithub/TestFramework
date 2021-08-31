@@ -1,4 +1,4 @@
-@ui
+
 @firefox
 Feature: Favorite Restaurant
 

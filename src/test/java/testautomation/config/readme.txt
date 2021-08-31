@@ -1,3 +1,6 @@
+chrome : ver.92
+firefox :  ver.91
+
 
 -Login ve Favori restoran fonksiyonları test edildi.
 -Parallel ve crossbrowser koşması için browser tagları kullanıldı (@chrome , @firefox).
@@ -13,5 +16,8 @@ utils/WebdriverUtils : webdriver yaratılması, kill edilmesi.
 
 Hata alan senaryolara ait screenshot /target altına çıkıyor.
 Test Raporu;  /target/cucumber-reports/cucumber-html-reports içerisinde bulunuyor /tüm senaryolar için: (ui.html).
+
+Not: Hepsini paralel koşunca yemeksepeti kullanıcısı frauda düşüyor. firefox için olan feature lara da @ui tagı
+eklenirse paralelde koşacaklardır.
 
 
