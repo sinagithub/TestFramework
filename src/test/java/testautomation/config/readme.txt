@@ -14,4 +14,7 @@ utils/WebdriverUtils : webdriver yaratılması, kill edilmesi.
 Hata alan senaryolara ait screenshot /target altına çıkıyor.
 Test Raporu;  /target/cucumber-reports/cucumber-html-reports içerisinde bulunuyor /tüm senaryolar için: (ui.html).
 
+Not: Hepsini paralel koşunca yemeksepeti kullanıcısı frauda düşüyor. firefox için olan feature lara da @ui tagı
+eklenirse paralelde koşacaklardır.
+
 
